@@ -45,7 +45,11 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
               model.push(value.id);
             });
           } else {
-            model = select2_data;
+              if(opts.convertToModel) {
+                  model = opts.convertToModel(select2_data);
+              } else {
+                  model = select2_data;
+              }
           }
           return model;
         };
